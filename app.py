@@ -22,7 +22,12 @@ socketio.init_app(app)
 app.register_blueprint(auth_bp)
 app.register_blueprint(chat_bp)
 
-
+@app.route("/")
+def home():
+    return {
+        "status": "success",
+        "message": "Chat Backend Running"
+    }
 with app.app_context():
     db.create_all()
 
